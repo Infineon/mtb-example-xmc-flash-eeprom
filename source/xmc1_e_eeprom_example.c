@@ -36,7 +36,9 @@
 * DEALINGS IN THE SOFTWARE.
 *                                                                              
 *****************************************************************************/
-#ifdef TARGET_KIT_XMC14_BOOT_001
+#include "xmc_device.h"
+#if (UC_FAMILY == XMC1)
+//#if defined(TARGET_KIT_XMC11_BOOT_001) || defined(TARGET_KIT_XMC12_BOOT_001) || defined(TARGET_KIT_XMC13_BOOT_001) || defined(TARGET_KIT_XMC14_BOOT_001)
 /*****************************************************************************
  * HEADER FILES
  ****************************************************************************/
@@ -50,9 +52,9 @@
 #define E_EEPROM_BLOCK_NUM     1U
 #define E_EEPROM_BLOCK1_SIZE   64U
 /* Macros for the messages to print */
-#define E_EEPROM_EXISTING_DATA_STRING          "Existing Data in EEPROM\r\n"
-#define E_EEPROM_NEW_DATA_STRING               "New Data in EEPROM\r\n"
-#define E_EEPROM_INIT_ERROR_STRING             "E_EEPROM initialization failed\r\n"
+#define E_EEPROM_EXISTING_DATA_STRING          "Existing data in EEPROM\r\n"
+#define E_EEPROM_NEW_DATA_STRING               "New data in EEPROM\r\n"
+#define E_EEPROM_INIT_ERROR_STRING             "EEPROM initialization failed\r\n"
 #define E_EEPROM_READ_ERROR_STRING             "Failed to read data from EEPROM\r\n"
 #define E_EEPROM_WRITE_ERROR_STRING            "Failed to write data to EEPROM\r\n"
 #define E_EEPROM_INCONSISTENT_BLOCK_STRING     "E_EEPROM block is inconsistent, writing sample data (0x00)\r\n"
@@ -193,6 +195,25 @@ static void E_EEPROM_test(uint8_t blockNum, uint32_t block_size)
 }
 
 /*******************************************************************************
+* Function Name: E_EEPROM_erase
+********************************************************************************
+* Summary:
+* Function to erase the EEPROM area.
+*
+* Parameters:
+* void
+*
+* Return:
+* void
+*
+*******************************************************************************/
+void E_EEPROM_erase()
+{
+    XMC_FLASH_ErasePages( (uint32_t*)E_EEPROM_XMC1_FLASH_BANK0_BASE, (E_EEPROM_XMC1_BANK_PAGES*1));
+    XMC_FLASH_ErasePages( (uint32_t*)E_EEPROM_XMC1_FLASH_BANK1_BASE, (E_EEPROM_XMC1_BANK_PAGES*1));
+}
+
+/*******************************************************************************
 * Function Name: E_EEPROM_example
 ********************************************************************************
 * Summary:
@@ -208,6 +229,13 @@ static void E_EEPROM_test(uint8_t blockNum, uint32_t block_size)
 void E_EEPROM_example()
 {
     uint8_t i;
+
+    /* Before starting, make sure that the flash shall not contain any data in the EEPROM area. Else erase the EEPROM
+     * area using xmc1_flash LLD API XMC_FLASH_ErasePages() API shown below. Enable the below commented code and build.
+     * Once the example runs successfully, this line can be removed from future builds to ensure data retention. */
+//    XMC_FLASH_ErasePages( (uint32_t*)E_EEPROM_XMC1_FLASH_BANK0_BASE, (E_EEPROM_XMC1_BANK_PAGES*1));
+//    XMC_FLASH_ErasePages( (uint32_t*)E_EEPROM_XMC1_FLASH_BANK1_BASE, (E_EEPROM_XMC1_BANK_PAGES*1));
+
     /* Initialize emulated EEPROM */
     if(E_EEPROM_XMC1_Init(&E_EEPROM_XMC1_handle) != E_EEPROM_XMC1_STATUS_SUCCESS)
     {

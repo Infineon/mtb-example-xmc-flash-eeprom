@@ -1,8 +1,12 @@
 /******************************************************************************
 * File Name:   main.c
 *
-* Description: This is the source code for the XMC MCU: Empty Application
-*              Template for ModusToolbox.
+* Description: This is the source code for the XMC MCU: Flash EEPROM Example
+*              for ModusToolbox. This code example shows how to use a portion 
+*              of the internal flash memory of XMC MCUs as emulated EEPROM 
+*              memory, and provides necessary APIs to perform read and write 
+*              operations to the emulated EEPROM.
+*              
 *
 * Related Document: See README.md
 *
@@ -40,10 +44,11 @@
 #include "cy_utils.h"
 #include "print_functions.h"
 
-#ifdef TARGET_KIT_XMC14_BOOT_001
+#if (UC_FAMILY == XMC1)
 #include "xmc1_e_eeprom_example.h"
 #endif
-#ifdef TARGET_KIT_XMC47_RELAX_V1
+
+#if (UC_FAMILY == XMC4)
 #include "xmc4_e_eeprom_example.h"
 #endif
 
@@ -78,9 +83,21 @@ int main(void)
     }
 
     /* Print project name */
+    print_buffer_text((uint8_t *)("\x1b[2J\x1b[;H"), sizeof("\x1b[2J\x1b[;H"));
     print_buffer_text((uint8_t *)PROJECT_HEADER_COMMON_LINE, sizeof(PROJECT_HEADER_COMMON_LINE));
     print_buffer_text((uint8_t *)PROJECT_HEADER_NAME, sizeof(PROJECT_HEADER_NAME));
     print_buffer_text((uint8_t *)PROJECT_HEADER_COMMON_LINE, sizeof(PROJECT_HEADER_COMMON_LINE));
+
+    #if (UC_FAMILY == XMC1)
+    /* For XMC1 Devices:
+     * Before starting, make sure that the flash shall not contain any data in
+     * the EEPROM area. Else erase the EEPROM area using xmc1_flash LLD API
+     * XMC_FLASH_ErasePages() API shown below. Enable the below commented code
+     * and build. Once the example runs successfully, this line can be commented
+     * from future builds to ensure data retention.
+     * */
+    //E_EEPROM_erase();
+    #endif
 
     E_EEPROM_example();
     for (;;)

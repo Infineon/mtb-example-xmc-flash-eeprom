@@ -36,7 +36,10 @@
 * DEALINGS IN THE SOFTWARE.
 *                                                                              
 *****************************************************************************/
-#ifdef TARGET_KIT_XMC47_RELAX_V1
+//#ifdef TARGET_KIT_XMC47_RELAX_V1
+
+#include "xmc_device.h"
+#if (UC_FAMILY == XMC4)
 #include <stdio.h>
 #include "xmc4_e_eeprom.h"
 #include "xmc4_e_eeprom_example.h"

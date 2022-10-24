@@ -40,6 +40,7 @@
 #ifndef XMC1_E_EEPROM_EXAMPLE_H_
 #define XMC1_E_EEPROM_EXAMPLE_H_
 
+void E_EEPROM_erase();
 void E_EEPROM_example();
 
 #endif /* XMC1_E_EEPROM_EXAMPLE_H_ */

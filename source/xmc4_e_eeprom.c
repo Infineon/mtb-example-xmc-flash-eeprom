@@ -35,7 +35,10 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  *****************************************************************************/
-#ifdef TARGET_KIT_XMC47_RELAX_V1
+#include "xmc_device.h"
+//#ifdef TARGET_KIT_XMC47_RELAX_V1
+#if (UC_FAMILY == XMC4) //&& !(UC_FAMILY == XMC1)
+//#if (UC_FAMILY == XMC4) && defined(FCE)
 /*****************************************************************************
  * HEADER FILES
  ****************************************************************************/

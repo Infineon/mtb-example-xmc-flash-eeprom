@@ -36,7 +36,11 @@
  * DEALINGS IN THE SOFTWARE.
  *
  *****************************************************************************/
-#ifdef TARGET_KIT_XMC14_BOOT_001
+#include "xmc_device.h"
+//#ifdef TARGET_KIT_XMC14_BOOT_001
+#if (UC_FAMILY == XMC1) //&& (UC_FAMILY != XMC4)
+//#if defined(TARGET_KIT_XMC11_BOOT_001) || defined(TARGET_KIT_XMC12_BOOT_001) || defined(TARGET_KIT_XMC13_BOOT_001) || defined(TARGET_KIT_XMC14_BOOT_001)
+
 /*****************************************************************************
  * HEADER FILES
  ****************************************************************************/
@@ -290,7 +294,9 @@ E_EEPROM_XMC1_STATUS_t E_EEPROM_XMC1_Init(E_EEPROM_XMC1_t *const handle_ptr)
     uint32_t indx;
     uint32_t marker_state;
 
+//#ifdef TARGET_KIT_XMC14_BOOT_001
     e_eeprom_xmc1_handle = handle_ptr;
+//#endif
 
     XMC_ASSERT("E_EEPROM_XMC1_Write:Invalid Buffer Pointer", (handle_ptr != NULL));
 

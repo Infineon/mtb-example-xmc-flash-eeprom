@@ -56,6 +56,7 @@
 * 2021-01-08:
 *     - Modified check for minimum XMCLib version
 *****************************************************************************/
+#include "xmc_device.h"
 
 #ifndef E_EEPROM_XMC1_H
 #define E_EEPROM_XMC1_H
@@ -63,7 +64,7 @@
 /*****************************************************************************
  * HEADER FILES
  ****************************************************************************/
-
+#include "xmc_device.h"
 #include "xmc_flash.h"
 
 //conf
@@ -77,10 +78,12 @@
 /*
  *  EMULATED_EEPROM Bank, start and end addresses
  */
+#if (UC_SERIES == XMC14)
 #define E_EEPROM_XMC1_FLASH_BANK0_BASE     (0x10032000U)
 #define E_EEPROM_XMC1_FLASH_BANK0_END      (0x100327ffU)
 #define E_EEPROM_XMC1_FLASH_BANK1_BASE     (0x10032800U)
 #define E_EEPROM_XMC1_FLASH_BANK1_END      (0x10032fffU)
+#endif
 
 /* Total number of configured Data blocks */
 #define E_EEPROM_XMC1_MAX_BLOCK_COUNT      (1U)
