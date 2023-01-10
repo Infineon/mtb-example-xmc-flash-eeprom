@@ -106,7 +106,11 @@ VFP_SELECT=
 #
 # NOTE: Includes and defines should use the INCLUDES and DEFINES variable
 # above.
-CFLAGS=
+ifneq ($(TOOLCHAIN), IAR)
+    CFLAGS=
+else
+    CFLAGS=--vla
+endif
 
 # Additional / custom C++ compiler flags.
 #
