@@ -14,7 +14,7 @@ This code example does the following:
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-xmc-flash-eeprom)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzI1ODkiLCJTcGVjIE51bWJlciI6IjAwMi0zMjU4OSIsIkRvYyBUaXRsZSI6IlhNQyZ0cmFkZTsgTUNVOiBGbGFzaCBFRVBST00iLCJyaWQiOiJib29wYWxhbXNyaW4iLCJEb2MgdmVyc2lvbiI6IjIuMS4wIiwiRG9jIExhbmd1YWdlIjoiRW5nbGlzaCIsIkRvYyBEaXZpc2lvbiI6Ik1DRCIsIkRvYyBCVSI6IklDVyIsIkRvYyBGYW1pbHkiOiJOL0EifQ==)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzI1ODkiLCJTcGVjIE51bWJlciI6IjAwMi0zMjU4OSIsIkRvYyBUaXRsZSI6IlhNQyZ0cmFkZTsgTUNVOiBGbGFzaCBFRVBST00iLCJyaWQiOiJzdWJyYW1hbml5YXAiLCJEb2MgdmVyc2lvbiI6IjIuMS4xIiwiRG9jIExhbmd1YWdlIjoiRW5nbGlzaCIsIkRvYyBEaXZpc2lvbiI6Ik1DRCIsIkRvYyBCVSI6IklDVyIsIkRvYyBGYW1pbHkiOiJOL0EifQ==)
 
 
 ## Requirements
@@ -28,8 +28,6 @@ This code example does the following:
 ## Supported toolchains (make variable 'TOOLCHAIN')
 
 - GNU Arm® embedded compiler v10.3.1 (`GCC_ARM`) - Default value of `TOOLCHAIN`
-- Arm&reg; compiler v6.16 (`ARM`)
-- IAR C/C++ compiler v9.30.1 (`IAR`)
 
 ## Supported kits (make variable 'TARGET')
 
@@ -214,6 +212,7 @@ Document title: *CE232589* – *XMC&trade; MCU: Flash EEPROM*
 | 1.1.0   | Added support for more kits |
 | 2.0.0   | Updated to support ModusToolbox&trade software v3.0; CE will not be backwards compatible with previous versions of ModusToolbox™ software |
 | 2.1.0   | Added support for more kits |
+| 2.1.1   | Updated README        |
 ------
 
 All other trademarks or registered trademarks referenced herein are the property of their respective owners.
